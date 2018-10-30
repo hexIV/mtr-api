@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "reflect-metadata": "^0.1.12",
+    "ts-node": "^7.0.1",
+    "typeorm": "^0.2.8",
+    "typeorm-model-generator": "^0.2.22"
+  },
+  "scripts": {
+    "start": "ts-node src",
+    "models": "typeorm-model-generator --noConfig -e mysql --cf pascal --ce pascal --cp pascal -d mtr -o ./src/entity",
+    "create-migration": "ts-node ./node_modules/typeorm/cli.js migration:create",
+    "run-migration": "ts-node ./node_modules/typeorm/cli.js migration:run"
+  },
+  "author": "Josef Orland",
+  "license": "ISC"
+}
