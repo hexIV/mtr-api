@@ -8,15 +8,17 @@
     "password": "",
     "database": "mtr",
     "synchronize": false,
-    "entities": [
-      "entities/*.ts"
-    ],
     "migrationsTableName": "migrations",
     "migrations": [
-      "migration/*.js"
+      "src/migration/*.ts"
+    ],
+    "entities": [
+      "src/entity/*.ts"
     ],
     "cli": {
-      "migrationsDir": "migration"
+      "migrationsDir": "src/migration",
+      "entitiesDir": "src/entity",
+      "subscribersDir": "src/subscriber"
     }
   }
 ]
