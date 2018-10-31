@@ -28,7 +28,7 @@ export class Horsestablepoints {
         
 
    
-    @ManyToOne(type=>Seasons, Seasons=>Seasons.Horsestablepointss,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
+    @ManyToOne(type=>Seasons, Seasons=>Seasons.horsesPoints,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
     @JoinColumn({ name:'season_id'})
     Season:Seasons | null;
 

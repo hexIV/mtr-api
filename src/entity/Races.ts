@@ -1,126 +1,116 @@
-import {Index,Entity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, ManyToMany, JoinColumn, JoinTable, RelationId} from "typeorm";
+import {Index,Entity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, ManyToMany, JoinColumn, JoinTable, RelationId, BaseEntity} from "typeorm";
 import {Flatraceresults} from "./Flatraceresults";
 import {Racehorses} from "./Racehorses";
 import {Raceresults} from "./Raceresults";
 
-
-@Entity("races",{schema:"mtr"})
-export class Races {
+@Entity("races", { schema:"mtr" })
+export class Races extends BaseEntity {
 
     @PrimaryGeneratedColumn({ 
-        name:"race_id"
-        })
-    RaceId:number;
-        
+        name:"id"
+    })
+    id:number;
 
-    @Column("int",{ 
+    @Column("int", { 
         nullable:false,
-        name:"race_no"
-        })
-    RaceNo:number;
+        name:"number"
+    })
+    number: number;
         
+    @Column("varchar", {
+        nullable: false,
+        length: 40,
+        name: "type"
+    })
+    type: string;
 
-    @Column("varchar",{ 
-        nullable:false,
-        length:40,
-        name:"race_type"
-        })
-    RaceType:string;
-        
+    @Column("varchar", { 
+        nullable: false,
+        length: 200,
+        name: "class"
+    })
+    class: string;
 
-    @Column("varchar",{ 
-        nullable:false,
-        length:200,
-        name:"race_class"
-        })
-    RaceClass:string;
-        
-
-    @Column("bigint",{ 
+    @Column("bigint", { 
         nullable:false,
         name:"race_time"
-        })
+    })
     RaceTime:string;
-        
 
-    @Column("double",{ 
-        nullable:false,
-        precision:22,
-        name:"race_prize1"
-        })
-    RacePrize1:number;
-        
+    @Column("double", {
+        nullable: false,
+        precision: 22,
+        name: "prize1"
+    })
+    prize1: number;
+    
+    @Column("double", {
+        nullable: false,
+        precision: 22,
+        name: "prize2"
+    })
+    prize2: number;
 
-    @Column("double",{ 
-        nullable:false,
-        precision:22,
-        name:"race_prize2"
-        })
-    RacePrize2:number;
-        
+    @Column("double", {
+        nullable: false,
+        precision: 22,
+        name: "prize3"
+    })
+    prize3: number;
 
-    @Column("double",{ 
-        nullable:false,
-        precision:22,
-        name:"race_prize3"
-        })
-    RacePrize3:number;
-        
+    @Column("double", {
+        nullable: false,
+        precision: 22,
+        name: "prize4"
+    })
+    prize4: number;
 
-    @Column("double",{ 
-        nullable:false,
-        precision:22,
-        name:"race_prize4"
-        })
-    RacePrize4:number;
-        
+    @Column("double", { 
+        nullable: false,
+        default: "0",
+        precision: 22,
+        name: "prize5"
+    })
+    prize5: number;
 
-    @Column("double",{ 
-        nullable:false,
-        default:"0",
-        precision:22,
-        name:"race_prize5"
-        })
-    RacePrize5:number;
+    @Column("int", {
+        nullable: false,
+        name: "distance"
+    })
+    distance: number;
         
-
-    @Column("int",{ 
-        nullable:false,
-        name:"race_distance"
-        })
-    RaceDistance:number;
-        
-
-    @Column("int",{ 
+    @Column("int", {
         nullable:false,
         name:"meeting_id"
-        })
-    MeetingId:number;
-        
+    })
+    meetingId: number;        
 
-    @Column("int",{ 
+    @Column("int", { 
         nullable:false,
-        name:"race_horsesno"
-        })
-    RaceHorsesno:number;
-        
+        name:"horses_count"
+    })
+    horsesCount: number;
 
-    @Column("tinyint",{ 
-        nullable:false,
-        width:1,
-        default:"0",
-        name:"race_status"
-        })
-    RaceStatus:boolean;
+    @Column("tinyint", { 
+        nullable: false,
+        width: 1,
+        default: "0",
+        name:"status"
+    })
+    status: boolean;
         
+    @Column("varchar", { 
+        nullable: true,
+        length: 1000,
+        name: "youtube_link"
+    })
+    youtubeLink:string;
 
-    @Column("varchar",{ 
-        nullable:false,
-        length:1000,
-        name:"youtube_link"
-        })
-    YoutubeLink:string;
-        
+    @Column("datetime", { 
+        nullable: false,
+        name:"starts_on"
+    })
+    startsOn: Date;
 
    
     @OneToMany(type=>Flatraceresults, Flatraceresults=>Flatraceresults.Race,{ onDelete: 'CASCADE' ,onUpdate: 'CASCADE' })

@@ -4,16 +4,21 @@ import { News } from "../entity/News";
 
 export default class NewsController implements IRouteController {
     public applyRoutes: IApplyRoutes = (app) => {
-        app.get("/news", this.latestNews);
+        app.get("/news", requireAuthHandler, this.getNews);
     }
 
-    private latestNews: RequestHandler = async (req, res) => {
-        const latestNews = await News.createQueryBuilder("news")
+    private getNews: RequestHandler = async (req, res) => {
+        const news = await News.createQueryBuilder("news")
             .select(["news.title", "news.body", "news.created"])
             .orderBy("created", "DESC")
-            .take(20)
+            .take(50)
             .getManyAndCount();
 
-        return res.status(200).json({ success: true, data: latestNews });
+        return res.status(200).json({ 
+            success: true,
+            data: {
+                "news": news
+            }
+        });
     }
 }

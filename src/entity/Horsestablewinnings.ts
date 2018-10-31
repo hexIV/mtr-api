@@ -29,7 +29,7 @@ export class Horsestablewinnings {
         
 
    
-    @ManyToOne(type=>Seasons, Seasons=>Seasons.Horsestablewinningss,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
+    @ManyToOne(type=>Seasons, Seasons=>Seasons.horsesWinnings,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
     @JoinColumn({ name:'season_id'})
     Season:Seasons | null;
 

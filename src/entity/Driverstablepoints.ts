@@ -28,7 +28,7 @@ export class Driverstablepoints {
         
 
    
-    @ManyToOne(type=>Seasons, Seasons=>Seasons.Driverstablepointss,{  nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
+    @ManyToOne(type=>Seasons, Seasons=>Seasons.driversPoints, { nullable:false,onDelete: 'CASCADE',onUpdate: 'CASCADE' })
     @JoinColumn({ name:'season_id'})
     Season:Seasons | null;
 
