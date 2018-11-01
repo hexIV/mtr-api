@@ -1,4 +1,4 @@
-import {Index,Entity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, ManyToMany, JoinColumn, JoinTable, RelationId} from "typeorm";
+import {Index,Entity, PrimaryColumn, PrimaryGeneratedColumn, Column, OneToOne, OneToMany, ManyToOne, ManyToMany, JoinColumn, JoinTable, RelationId, BaseEntity} from "typeorm";
 import {Drivers} from "./Drivers";
 import {Seasons} from "./Seasons";
 
@@ -6,7 +6,7 @@ import {Seasons} from "./Seasons";
 @Entity("driverstablepoints",{schema:"mtr"})
 @Index("Foreign",["Driver",])
 @Index("Foreign2",["Season",])
-export class Driverstablepoints {
+export class Driverstablepoints extends BaseEntity {
 
     @PrimaryGeneratedColumn({ 
         name:"ranking_id"
